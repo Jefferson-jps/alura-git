@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho Individual</title>
+    <style>
+        .body {
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .btn-resultado {
+            width: 15%;
+            height: 30px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border-radius: 2px;
+        }
+    </style>
+
+    <script>
+        function calcularImposto() {
+            var salario = 0;
+            var aliquota = 0;
+            salario = parseInt(document.getElementById('salario').value);
+            var resposta = document.getElementById('resposta');
+
+            if (salario <= 0) {
+                alert("Por gentileza digitar um valor válido!");
+            } else if (salario <= 1434) {
+                aliquota = "Isento";
+            } else if (salario > 1434 || salario <= 2150) {
+                aliquota += salario * 0.075;
+            } else if (salario > 2150 || salario <= 2866) {
+                aliquota += salario * 0.15;
+            } else if (salario > 2866 || salario <= 3582) {
+                aliquota += salario * 0.225;
+            } else {
+                aliquota += salario * 0.275;
+            }
+            resposta.setAttribute("value", aliquota);
+
+        }
+    </script>
+
+</head>
+
+<body class="body">
+    <h1>Cálculo do Imposto de Renda</h1>
+
+    <label for="inputRegistro">Registro: </label>
+    <input type="text" name="inputRegistro" class="body">
+    <br>
+    <label for="inputNome">Nome: </label>
+    <input type="text" name="inputNome" class="body">
+    <br>
+    <label for="inputSalario">Salário: </label>
+    <input type="number" name="inputSalario" class="body" id="salario">
+    <br>
+    <div>
+        <br>
+        <button class="btn-resultado" onclick="calcularImposto(salario)">Calcular IR</button>
+
+    </div>
+    <br> Imposto de Renda: <input type="text" class="body" id="resposta" value="" disabled>
+
+</body>
+
+</html>
